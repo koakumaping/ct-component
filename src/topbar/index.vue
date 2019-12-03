@@ -166,6 +166,7 @@ export default {
   },
   mounted() {
     const params = {
+      sys: this.sys,
       status: 0,
       currentpage: 1,
       pagesize: 9999,
