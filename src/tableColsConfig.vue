@@ -1,5 +1,5 @@
 <template>
-  <ct-dialog ref="tableColsConfig" title="自定义列表项" width="400" @on-close="saveColsToServer">
+  <ct-dialog ref="tableColsConfig" title="自定义列表项" width="800" @on-close="saveColsToServer">
     <ct-table :data="cols" width="320" max-height="500">
       <ct-table-column label="显示" width="80">
         <template v-slot="scope">
@@ -7,7 +7,7 @@
         </template>
       </ct-table-column>
       <ct-table-column label="列名" prop="label"></ct-table-column>
-      <ct-table-column label="排序">
+      <ct-table-column label="排序" width="120">
         <template v-slot="scope">
           <div class="pointer" @click="up(scope.$index)" style="line-height: 14px;">
             <fa-font name="caret-up"></fa-font>
@@ -15,6 +15,11 @@
           <div class="pointer" @click="down(scope.$index)" style="line-height: 14px;">
             <fa-font name="caret-down"></fa-font>
           </div>
+        </template>
+      </ct-table-column>
+      <ct-table-column label="固定">
+        <template v-slot="scope">
+          <single-block :data="fixedList" v-model="scope.row.fixed"/>
         </template>
       </ct-table-column>
     </ct-table>
@@ -37,6 +42,27 @@ export default {
       type: String,
       default: '',
     },
+  },
+  data() {
+    return {
+      fixedList: [
+        {
+          key: 'cxerfjhksd89y',
+          label: '默认',
+          value: '',
+        },
+        {
+          key: 'zjkrfj908fdsj',
+          label: '左侧',
+          value: 'left',
+        },
+        {
+          key: 'cklv908903jkl',
+          label: '右侧',
+          value: 'right',
+        },
+      ],
+    }
   },
   methods: {
     show() {

@@ -8,6 +8,7 @@
       :label="fruit.label"
       :prop="fruit.prop"
       :minWidth="fruit.width ? fruit.width : fruit.minWidth"
+      :fixed="fruit.fixed === '' ? false : fruit.fixed"
       v-if="fruit.isshow"
       className="hidden"
     >
