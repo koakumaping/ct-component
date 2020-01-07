@@ -24,6 +24,7 @@
       style="margin-top: 8px"
       :accept="accept"
       :choose="choose"
+      :type="type"
       :chooseList="chooseList"
       v-if="data.edit || data.noId"
     />
@@ -69,6 +70,10 @@ export default {
     chooseList: {
       type: Array,
       default: () => [],
+    },
+    type: {
+      type: Number,
+      default: 1,
     },
   },
   methods: {

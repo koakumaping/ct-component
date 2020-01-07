@@ -39,7 +39,7 @@ export default {
 }
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 a.file-link:visited
   color: #666
 </style>
