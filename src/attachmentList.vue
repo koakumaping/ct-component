@@ -75,10 +75,21 @@ export default {
       type: Number,
       default: 1,
     },
+    // 附件数量限制
+    max: {
+      type: Number,
+      default: 99,
+    },
   },
   methods: {
     // 上传文件成功后调用
     uploadList(payload) {
+      if (this.data.list.length >= this.max) {
+        this.$notice.warn({
+          content: `最多只能上传${this.max}个附件`,
+        })
+        return false
+      }
       this.data.list.push(payload)
     },
     // 删除已经上传了的文件
