@@ -80,13 +80,18 @@ export default {
       type: Number,
       default: 99,
     },
+    // max-tips
+    maxTips: {
+      type: String,
+      default: '已达最大附件数量，请尝试打包后上传。',
+    },
   },
   methods: {
     // 上传文件成功后调用
     uploadList(payload) {
       if (this.data.list.length >= this.max) {
         this.$notice.warn({
-          content: `最多只能上传${this.max}个附件`,
+          content: this.maxTips,
         })
         return false
       }
