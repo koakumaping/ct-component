@@ -104,7 +104,7 @@ export default {
         return true
       }
       const params = {
-        uptype: '1',
+        uptype: this.type,
         filepatch: encodeURI(filepatch, 'UTF-8'),
         id: id,
       }
