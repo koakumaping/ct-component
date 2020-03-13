@@ -1,5 +1,5 @@
 <template>
-  <div class="warp">
+  <div class="warp" :class="{ 'is-basic': isBasic }">
     <flow-tips v-if="flowVisible"/>
     <errorPage v-else-if="errorVisible" :error="errorInfo" />
     <span v-else>
@@ -29,6 +29,9 @@ export default {
     ...mapGetters([
       'flowVisible',
     ]),
+    isBasic() {
+      return this.$route.meta.basic
+    },
   },
   methods: {
     showSpin() {
@@ -50,3 +53,8 @@ export default {
   },
 }
 </script>
+
+<style lang="sass">
+.warp.is-basic
+  padding-bottom: 60px
+</style>
