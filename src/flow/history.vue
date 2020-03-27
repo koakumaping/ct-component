@@ -18,7 +18,7 @@
             >
               <div class="ct-flowinfo-line"></div>
               <div class="ct-flowinfo-status">
-                <fa-font name="clock" class="text-yellow" v-if="!isOver && index === 0"/>
+                <fa-font name="clock-o" class="text-red" v-if="!isOver && index === 0"/>
                 <fa-font name="check-circle" class="text-green" v-else/>
               </div>
               <div class="ct-flowinfo-content-warp">
@@ -149,11 +149,10 @@ $color-yellow = #ffd341
       &::after
         background-color: #f5f5f5
     .ct-flowinfo-line
-      width: 60px
       left: 30px
-      top: 21px
+      top: 35px
       position: absolute
-      height: 100%
+      height: 70%
       width: 1px
       background-color: rgb(225, 225, 225)
       z-index: 1
