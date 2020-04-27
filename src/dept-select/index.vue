@@ -24,26 +24,21 @@
 
     <ul ref="list" class="ct-dept-select__list" :style="listStyle" v-show="visible">
       <li v-if="deptList.length === 0 && searchName !== ''">{{ loading ? '查询中' : '暂无相关数据' }}</li>
-      <li
-        v-for="line in deptList"
-        :key="`${line.key}_${_.randomString(10)}`"
-        @click="handleClick(line)"
-        :data-value="line.value"
-      >
-        <flex v-if="_.isArray(line.label)">
-          <flex-item
+      <table class="ct-remote-select__table">
+        <tr
+          v-for="line in deptList"
+          :key="`${line.key}_${_.randomString(10)}`"
+          @click="handleClick(line)"
+          :data-value="line.value"
+        >
+          <td
             v-for="(item, index) in line.label"
             :key="`${item}_${_.randomString(6)}`"
             v-if="level !== '' ? index < level : true"
-          >{{ $e(item) }}</flex-item>
-        </flex>
-        <span v-else>{{ line.label }}</span>
-      </li>
-      <li class="useless"
-        v-for="item in maxItem - 1"
-        :key="item"
-        v-show="deptList.length > maxItem"
-      >{{item}}</li>
+            :title="item"
+          >{{ $e(item) }}</td>
+        </tr>
+      </table>
     </ul>
   </div>
 </template>
@@ -55,10 +50,6 @@ export default {
   name: 'deptSelect',
   mixins: [emitter],
   props: {
-    // data: {
-    //   type: Array,
-    //   default: () => [],
-    // },
     placeholder: {
       type: [String, Number],
       default: '请选择',
@@ -157,11 +148,6 @@ export default {
   },
   methods: {
     getList(payload) {
-      // if (this._.isEmpty(payload)) {
-      //   this.deptList = []
-      //   return false
-      // }
-
       const options = {
         name: payload,
       }
