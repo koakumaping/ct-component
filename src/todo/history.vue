@@ -1,11 +1,12 @@
 <template>
   <listWarp>
     <ct-action-bar @on-search="doSearch">
-      <ct-button @click="reload" icon="refresh"></ct-button>
+      <ct-button @click="reload" icon="refresh" />
 
       <template slot="right">
-        <ct-input v-model="searchForm.title" placeholder="标题" width="120px"></ct-input>
-        <ct-input v-model="searchForm.appler" placeholder="申请人" width="120px"></ct-input>
+        <ct-input v-model="searchForm.title" placeholder="标题" width="120px" />
+        <ct-input v-model="searchForm.appler" placeholder="申请人" width="120px" />
+        <ct-date-picker v-model="searchForm.finishtime" placeholder="审批时间" type="date"  width="120px" />
       </template>
 
       <template slot="extra">
@@ -30,9 +31,6 @@
               :disabled="item.disabled"
             />
           </ct-select>
-        </ct-form-search-line>
-        <ct-form-search-line title="开始时间" >
-          <ctDatePicker v-model="searchForm.finishtime" type="date"></ctDatePicker>
         </ct-form-search-line>
       </template>
     </ct-action-bar>
